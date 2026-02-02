@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bimano Fintax – Smart App</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2ece6;
+  --glass:rgba(255,255,255,0.65);
+  --border:rgba(255,255,255,0.35);
+  --blue:#e3f2fd;
+  --green:#e8f5e9;
+  --orange:#fff3e0;
+  --yellow:#fffde7;
+  --indigo:#e8eaf6;
+  --purple:#f3e5f5;
+  --radius:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(180deg,#f6efe9,#efe7df);
+  color:#1b1b1b;
+}
+.app{max-width:420px;margin:auto;padding:18px 14px 40px}
+
+.header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:18px;
+  animation:fadeDown .6s ease;
+}
+.logo{
+  width:56px;
+  height:56px;
+  border-radius:16px;
+  background:#ffffff;
+  padding:6px;
+  object-fit:contain;
+  box-shadow:0 8px 18px rgba(0,0,0,0.12);
+}
+.title{font-weight:700;font-size:1.3rem}
+.subtitle{font-size:.85rem;color:#666}
+
+.card{
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  margin-bottom:16px;
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
+  animation:fadeUp .7s ease;
+}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tile{
+  border-radius:18px;
+  padding:18px;
+  font-weight:600;
+  min-height:90px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
+}
+.tile:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+.tile span{font-size:.75rem;opacity:.7}
+.blue{background:var(--blue)}.green{background:var(--green)}.orange{background:var(--orange)}.yellow{background:var(--yellow)}.indigo{background:var(--indigo)}.purple{background:var(--purple)}
+
+.section{margin-top:14px;animation:fadeUp .5s ease}
+.section-title{font-weight:700;margin-bottom:8px}
+
+
+.btn{
+  display:block;
+  border-radius:18px;
+  padding:15px 16px;
+  margin-bottom:12px;
+  font-weight:600;
+  text-decoration:none;
+  color:#fff;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn:active{transform:scale(.97)}
+.btn small{display:block;font-size:.75rem;font-weight:400;opacity:.9}
+.b-orange{background:linear-gradient(135deg,#ff8f00,#ef6c00)}
+.b-green{background:linear-gradient(135deg,#43a047,#2e7d32)}
+.b-blue{background:linear-gradient(135deg,#2196f3,#1976d2)}
+.b-yellow{background:linear-gradient(135deg,#ffeb3b,#fbc02d)}
+
+
+.person{
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:12px;
+  animation:fadeUp .4s ease;
+}
+.role{font-size:.8rem;color:#666;margin-bottom:8px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.call{background:#e53935}.wa{background:#25d366}
+
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <img 
+      src="https://bimanofintax.com/wp-content/uploads/2020/07/Bimanofintax_logo.webp"
+      class="logo"
+      alt="Bimano Fintax Logo"
+      loading="lazy"
+    >
+    <div>
+      <div class="title">Bimano Fintax</div>
+      <div class="subtitle">Quick Access</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <div class="tile blue" onclick="openDashboard()">Dashboard<span>Staff / Partner Login</span></div>
+      <div class="tile green" onclick="openLoans()">Loans<span>All Loan Forms</span></div>
+      <div class="tile orange" onclick="openApplications()">Applications<span>GST • ITR • MSME</span></div>
+      <div class="tile yellow" onclick="openPartners()">Partners<span>Register</span></div>
+      <div class="tile indigo" onclick="openContact()">Quick Contact<span>Team Details</span></div>
+      <div class="tile purple" onclick="openMore()">More<span>Social & Website</span></div>
+    </div>
+  </div>
+
+
+  <div class="card" id="dashboardCard" style="display:none">
+    <div class="section-title">Dashboard</div>
+    <a class="btn b-blue" href="https://dashboard.bimanofintax.com/wp-admin" target="_blank">Bimano Fintax Dashboard<small>Staff / Partner Login Required</small></a>
+  </div>
+
+
+  <div class="card" id="loanCard" style="display:none">
+    <div class="section-title">Loan Forms</div>
+    <a class="btn b-green" href="https://forms.zohopublic.in/subhechyasengm1/form/BUSINESSLOANAPPLICATIONFORMBIMANO/formperma/h9X91w3U-Q31Dgrr7b9j_xZzYaoU0t9Z5dWfUtZoqoQ" target="_blank">Business Loan</a>
+    <a class="btn b-green" href="https://forms.zohopublic.in/subhechyasengm1/form/MortgageLoanApplicationForm/formperma/lVh9XKmnubaBdR9z4mvYmmqGfIWN9OOL2v8SLKL2BBs" target="_blank">Mortgage / LAP Loan</a>
+    <a class="btn b-green" href="https://forms.zohopublic.in/subhechyasengm1/form/PERSONALLOANAPPLICATIONFORMBIMANO/formperma/GbYyE2EhueUjebJnhgJJweyRRBFKa5fQjKi_GlLGU1k" target="_blank">Personal Loan</a>
+    <a class="btn b-green" href="https://zfrmz.in/BbbQw29DAdLl2l75ut89" target="_blank">Car Loan</a>
+  </div>
+
+
+  <div class="card" id="applicationsCard" style="display:block">
+    <div class="section">
+      <div class="section-title">Lead Generation</div>
+      <a class="btn b-orange" href="https://forms.zohopublic.in/subhechyasengm1/form/CUSTOMERVISITFORMBIMANO/formperma/8azkx6QODhRfV44Gn6-Z4m81K98Bdb6jxiAaGQc3j0s" target="_blank">Customer Visit Form<small>Daily field visit & follow-up entry</small></a>
+      <a class="btn b-orange" href="https://forms.zohopublic.in/subhechyasengm1/form/CUSTOMERCALLRECORDLEADGENERATION/formperma/YIcpAQad3DPQDJLytZuCuORlFuTwHszDPtplNyKTHq4" target="_blank">Customer Call Record / Lead Generation<small>Call logs & lead creation</small></a>
+    </div>
+    <div class="section">
+      <div class="section-title">Common Application</div>
+      <a class="btn b-green" href="https://forms.gle/w3SGwPyqkN62V8jKA" target="_blank">Common Application Form<small>GST • ITR • MSME • Licenses & more</small></a>
+    </div>
+  </div>
+
+
+  <div class="card" id="partnersCard" style="display:none">
+    <div class="section-title">Partner Registration</div>
+    <a class="btn b-yellow" href="https://forms.zohopublic.in/subhechyasengm1/form/PARTNERREGISTRATIONFORMBIMANOFINTAX/formperma/xDIOeX8pAgYVTTbLRhQBPyvsVbA8xJjTcyTduBHkbPA" target="_blank">Partner Registration Form</a>
+  </div>
+
+  <div class="card" id="contactCard" style="display:none">
+    <div class="section-title">Quick Contact</div>
+    <div class="person"><strong>Akash Saha</strong><div class="role">Accounting</div><div class="actions"><a class="btn call" href="tel:+919365262866">Call</a><a class="btn wa" href="https://wa.me/919365262866">WhatsApp</a></div><small>Accounting & Settlement</small></div>
+    <div class="person"><strong>Sapior Hossain</strong><div class="role">Unsecured Loan</div><div class="actions"><a class="btn call" href="tel:+916000786457">Call</a><a class="btn wa" href="https://wa.me/916000786457">WhatsApp</a></div><small>Business & Personal Loan enquiries</small></div>
+    <div class="person"><strong>Mostafizur Rahman</strong><div class="role">Secured Loan</div><div class="actions"><a class="btn call" href="tel:+919101383331">Call</a><a class="btn wa" href="https://wa.me/919101383331">WhatsApp</a></div><small>Mortgage & Used Car Loan</small></div>
+    <div class="person"><strong>Subhechya Sen</strong><div class="role">MD & CEO</div><div class="actions"><a class="btn call" href="tel:+918876513451">Call</a><a class="btn wa" href="https://wa.me/918876513451">WhatsApp</a></div><small>Overall operations & decisions</small></div>
+  </div>
+
+
+  <div class="card" id="moreCard" style="display:none">
+    <div class="section-title">More</div>
+    <a class="btn b-orange" href="https://www.facebook.com/share/16u3WM536Q/" target="_blank">Facebook Page<small>Official updates & announcements</small></a>
+    <a class="btn b-green" href="https://bimanofintax.com/" target="_blank">Official Website<small>Company profile & services</small></a>
+  </div>
+
+</div>
+
+<script>
+function resetSections(){
+  const ids=['applicationsCard','loanCard','dashboardCard','partnersCard','contactCard','moreCard'];
+  ids.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.style.display='none';
+  });
+}
+function openLoans(){resetSections();document.getElementById('loanCard').style.display='block';}
+function openApplications(){resetSections();document.getElementById('applicationsCard').style.display='block';}
+function openDashboard(){resetSections();document.getElementById('dashboardCard').style.display='block';}
+function openPartners(){resetSections();document.getElementById('partnersCard').style.display='block';}
+function openContact(){resetSections();document.getElementById('contactCard').style.display='block';}
+function openMore(){resetSections();document.getElementById('moreCard').style.display='block';}
+</script>
+
+</body>
+</html>
