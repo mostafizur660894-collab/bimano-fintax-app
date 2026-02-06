@@ -1,6 +1,7 @@
 {
   "name": "Bimano Fintax",
   "short_name": "Bimano",
+  "description": "Bimano Fintax Smart App for loans, applications, partners and quick access.",
   "start_url": "/bimano-fintax-app/",
   "display": "standalone",
   "background_color": "#f6efe9",
@@ -8,14 +9,17 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "Bimanofintax_logo.webp",
+      "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/webp"
+      "type": "image/png"
     },
     {
-      "src": "Bimanofintax_logo.webp",
+      "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/webp"
+      "type": "image/png"
     }
   ]
 }
+
+
+
